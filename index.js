@@ -60,8 +60,7 @@ var tree = function(color) {
     };
 
     var visit = function(node) {
-        var lastColorIdx = colors.length - 1;
-        if (node.label) node.label = colors[Math.min(node.depth, lastColorIdx)](node.label);
+        if (node.label) node.label = colors[Math.min(node.depth, colors.length - 1)](node.label);
         if (node.nodes) node.nodes = [].concat(node.nodes).map(visit);
         if (node.leaf)  node.nodes = [].concat(node.nodes || [], leaf(node.leaf));
         // if (node.label && (!node.nodes || !node.nodes.length)) node.nodes = [grey('(empty)')];
