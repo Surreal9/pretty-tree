@@ -60,7 +60,8 @@ var tree = function(color) {
     };
 
     var visit = function(node) {
-        if (node.label) node.label = colors[node.depth || 0](node.label);
+        //if (node.label) node.label = colors[node.depth || 0](node.label);
+        if (node.label) node.label = colors[node.depth % colors.length](node.label);
         if (node.nodes) node.nodes = [].concat(node.nodes).map(visit);
         if (node.leaf)  node.nodes = [].concat(node.nodes || [], leaf(node.leaf));
         // if (node.label && (!node.nodes || !node.nodes.length)) node.nodes = [grey('(empty)')];
